@@ -13,5 +13,14 @@
       "src": "/(.*)",
       "dest": "sample-apps/sample-app-ts/$1"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    },
+    "commands": {
+      "build": "cd sample-apps/sample-app-ts && npm run build",
+      "start": "npm run facetec-browser-sdk"
+    }
+  }
 }
