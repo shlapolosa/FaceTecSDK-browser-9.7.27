@@ -3,6 +3,7 @@
   <title>FaceTec Browser Demo Home</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <script type="text/javascript" src="./sample-apps/sample-app-ts/build/SampleApp.js"></script>
   <link rel="icon" href="./sample-app-resources/images/favicon.ico">
 </head>
 <style>
@@ -80,7 +81,8 @@
 
     <a href="./sample-apps/sample-app-ts/">Sample App TS</a>
     <a href="./sample-apps/compat-info/">Compat Info</a>
-    
+    <p id="status" aria-live="polite">Initializing...</p>
     <button onclick="SampleApp.onEnrollUserPressed()">Register</button>
+    <button onclick="SampleApp.onVerifyUserPressed()">Login</button>
   </div>
 </body>
