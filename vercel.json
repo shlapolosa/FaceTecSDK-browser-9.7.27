@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "sample-apps/sample-app-ts/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "sample-apps/sample-app-ts/$1"
+    }
+  ]
+}
