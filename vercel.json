@@ -2,7 +2,7 @@
   "builds": [
     {
       "src": "sample-apps/sample-app-ts/package.json",
-      "use": "@vercel/node",
+      "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
       }
@@ -11,16 +11,12 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "sample-apps/sample-app-ts/$1"
+      "dest": "/$1"
     }
   ],
   "build": {
     "env": {
       "NODE_ENV": "production"
-    },
-    "commands": {
-      "build": "cd sample-apps/sample-app-ts && npm run build",
-      "start": "npm run facetec-browser-sdk"
     }
   }
 }
