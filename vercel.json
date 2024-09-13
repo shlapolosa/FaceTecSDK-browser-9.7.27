@@ -4,7 +4,7 @@
       "src": "sample-apps/sample-app-ts/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "build"
       }
     }
   ],
