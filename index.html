@@ -1,88 +1,181 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <title>FaceTec Browser Demo Home</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-  <!-- <script type="text/javascript" src="./sample-apps/sample-app-ts/build/SampleApp.js"></script> -->
   <link rel="icon" href="./sample-app-resources/images/favicon.ico">
-</head>
-<style>
-  * {
-    font-size: 100%;
-    font-family: 'Source Sans Pro', Helvetica, sans-serif;
-    color: rgb(65, 127, 178);
-  }
-
-  html {
-    overflow: auto;
-    height: 100%;
-    background: white;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-
-  .navbar {
-    background-color: #111;
-    width: 318px;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 16px 0;
-    z-index: 1;
-  }
-
-  @media (max-width: 1280px) {
-    .navbar {
-      display: none;
+  <style>
+    * {
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      color: #333;
     }
-  }
 
-  .navbar a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 15px;
-    line-height: 24px;
-    color: rgb(65, 127, 178);
-    display: block;
-    font-weight: 400;
-  }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #f4f4f4;
+    }
 
-  .navbar a:hover {
-    color: white;
-  }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-  .logoContainer {
-    width: 250px;
-    margin: 15px auto;
-    color:rgb(65, 127, 178);
-    font-size: 12px;
-    position: relative;
-    text-align: center;
-  }
+    header {
+      background-color: #005b9a;
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
 
-  .logo {
-    height: 50px;
-  }
-</style>
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav {
+      background-color: #006cbe;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    nav a:hover {
+      background-color: #004f8d;
+    }
+
+    .login-button {
+      background-color: #004f8d;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      background-color: white;
+    }
+
+    .content h2 {
+      color: #005b9a;
+      font-size: 20px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .chat-container {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .chat-container h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #005b9a;
+    }
+
+    .chat-input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .chat-submit {
+      margin-top: 10px;
+      background-color: #006cbe;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .chat-submit:hover {
+      background-color: #004f8d;
+    }
+
+    footer {
+      background-color: #005b9a;
+      padding: 10px;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .navbar a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div class="navbar" id="browser-nav-bar" style="display:block;">
-    <div class="logoContainer">
-        <img src="./sample-app-resources/images/FaceTec_Logo_White.png" class="logo">
-      <div>Browser Apps</div>
-    </div>
 
-    <a href="./sample-apps/sample-app-ts/">Sample App TS</a>
-    <a href="./sample-apps/compat-info/">Compat Info</a>
+  <!-- Header Section -->
+  <header>
+    <h1>Heath Health Demo Site</h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="./sample-apps/sample-app-ts/" class="login-button">Login</a>
+    <a href="./sample-apps/sample-app-ts/">Register</a>
+  </nav>
+
+  <!-- Main Content Section -->
+  <div class="content">
+    <h2>Welcome to the FaceTec Browser Demo</h2>
+    <p>This page demonstrates the FaceTec technology using the sample app. You can explore different features and see how FaceTec works in the browser environment.</p>
     <p id="status" aria-live="polite">Initializing...</p>
-    <!-- <button onclick="SampleApp.onEnrollUserPressed()">Register</button>
-    <button onclick="SampleApp.onVerifyUserPressed()">Login</button> -->
+
+    <!-- Symptom Checker Section -->
+    <div class="chat-container">
+      <h3>Symptom Checker</h3>
+      <p>Describe your symptoms, and we'll assist you with possible conditions.</p>
+      <textarea class="chat-input" rows="4" placeholder="Enter your symptoms here..."></textarea>
+      <button class="chat-submit">Submit</button>
+    </div>
   </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 FaceTec, Inc. All Rights Reserved.</p>
+  </footer>
+
 </body>
+</html>
