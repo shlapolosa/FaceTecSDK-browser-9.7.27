@@ -101,8 +101,6 @@ export var SampleApp = ((): any => {
     // For demonstration purposes, verify that we have an enrollmentIdentifier to Verify against.
     if(latestEnrollmentIdentifier.length === 0) {
       DeveloperStatusMessages.logAndDisplayMessage("Please enroll first before trying verification.");
-      // Trigger ID Scan and OCR immediately after successful enrollment
-      onPhotoIDScanPressed();
     }
     else {
       SampleAppUtilities.fadeOutMainUIAndPrepareForSession();
@@ -110,7 +108,9 @@ export var SampleApp = ((): any => {
       // Get a Session Token from the FaceTec SDK, then start the 3D to 3D Matching.
       getSessionToken((sessionToken?: string): void => {
         latestProcessor = new VerificationProcessor(sessionToken as string, SampleApp as any);
-      });
+        // Trigger ID Scan and OCR immediately after successful verification
+        onPhotoIDMatchPressed();
+      }); 
     }
   }
 
