@@ -103,6 +103,10 @@ export var SampleApp = ((): any => {
     // For demonstration purposes, verify that we have an enrollmentIdentifier to Verify against.
     if(latestEnrollmentIdentifier.length === 0) {
       DeveloperStatusMessages.logAndDisplayMessage("Please enroll first before trying verification.");
+      // If the enrollment was successful, trigger the ID Match process
+      if (latestProcessor instanceof EnrollmentProcessor && latestProcessor.isSuccess()) {
+        onPhotoIDMatchPressed();
+      }
     }
     else {
       SampleAppUtilities.fadeOutMainUIAndPrepareForSession();
