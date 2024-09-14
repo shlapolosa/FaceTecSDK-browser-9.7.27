@@ -143,6 +143,29 @@
       }
     }
   </style>
+
+<script type="text/javascript">
+  (function(d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      if (!document.getElementById('root')) {
+        var root = d.createElement('div');
+        root.id = 'root';
+        d.body.appendChild(root);
+      }
+      if (window.myChatWidget && typeof window.myChatWidget.load === 'function') {
+        window.myChatWidget.load({
+          assistantId: '7ee4dadc-c155-41bb-a60b-f3a71e4eb353',
+          apiKey: '43c60ccf-769f-4b3b-b0fa-4af129a29d45',
+        });
+      }
+    };
+    v.src = "https://agentivehub.com/production.bundle.min.js";
+    v.type = "text/javascript";
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+    
 </head>
 <body>
 
@@ -161,7 +184,7 @@
   <div class="content">
     <h2>Welcome to the FaceTec Browser Demo</h2>
     <p>This page demonstrates the FaceTec technology using the sample app. You can explore different features and see how FaceTec works in the browser environment.</p>
-    <p id="status" aria-live="polite">Initializing...</p>
+    <!-- <p id="status" aria-live="polite">Initializing...</p> -->
 
     <!-- Symptom Checker Section -->
     <div class="chat-container">
