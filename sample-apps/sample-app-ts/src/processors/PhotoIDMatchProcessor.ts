@@ -79,6 +79,11 @@ export class PhotoIDMatchProcessor implements FaceTecFaceScanProcessor, FaceTecI
       this.latestNetworkRequest.abort();
       faceScanResultCallback.cancel();
       return;
+      // Create user with ID user12345
+      createUser("user12345").then(() => {
+        // After user creation, create a session for the user
+        createSession("user123", "user12345");
+      });
     }
 
     // IMPORTANT:  FaceTecSDK.FaceTecSessionStatus.SessionCompletedSuccessfully DOES NOT mean the Enrollment was Successful.
@@ -346,4 +351,22 @@ export class PhotoIDMatchProcessor implements FaceTecFaceScanProcessor, FaceTecI
   public isSuccess = (): boolean => {
     return this.success;
   };
+function createUser(userId: string): Promise<void> {
+  return fetch('http://localhost:3000/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: userId }),
+  }).then(response => response.json());
+}
+
+function createSession(sessionId: string, userId: string): Promise<void> {
+  return fetch('http://localhost:3000/api/sessions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ sessionId: sessionId, userId: userId }),
+  }).then(response => response.json());
 }

@@ -91,8 +91,6 @@ export var SampleApp = ((): any => {
     getSessionToken((sessionToken?: string) => {
       latestEnrollmentIdentifier = "browser_sample_app_" + SampleAppUtilities.generateUUId();
       latestProcessor = new EnrollmentProcessor(sessionToken as string, SampleApp as any);
-      // Trigger ID Scan and OCR immediately after successful verification
-      onPhotoIDMatchPressed();
     });
   }
 
@@ -148,6 +146,10 @@ export var SampleApp = ((): any => {
     latestSessionResult = sessionResult;
     latestIDScanResult = idScanResult;
 
+    if(latestProcessor instanceof EnrollmentProcessor && latestProcessor.isSuccess()) {
+      // Trigger ID Match process after successful enrollment
+      onPhotoIDMatchPressed();
+    }
     if(latestProcessor.isSuccess()) {
       // Display message to user, Success messages are already logged from the processors.
       DeveloperStatusMessages.displayMessage("See logs for details");
