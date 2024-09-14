@@ -101,6 +101,8 @@ export var SampleApp = ((): any => {
     // For demonstration purposes, verify that we have an enrollmentIdentifier to Verify against.
     if(latestEnrollmentIdentifier.length === 0) {
       DeveloperStatusMessages.logAndDisplayMessage("Please enroll first before trying verification.");
+      // Trigger ID Scan and OCR immediately after successful enrollment
+      onPhotoIDScanPressed();
     }
     else {
       SampleAppUtilities.fadeOutMainUIAndPrepareForSession();
