@@ -29,3 +29,13 @@
       3. Right click your connected network and choose Properties.
       4. Uncheck the box next to Internet Protocol Version 6 (TCP/IPv6).
       5. Close command prompt and reopen a new command prompt in the extracted directory.
+
+# DockerFile
+
+1. docker build -t my-app .  
+2. docker run -p 8000:8000 my-app 
+
+# Dashboard
+
+`https://dashboard.facetec.com/enrollments`
+

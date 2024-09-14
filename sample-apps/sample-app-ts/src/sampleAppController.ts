@@ -91,6 +91,8 @@ export var SampleApp = ((): any => {
     getSessionToken((sessionToken?: string) => {
       latestEnrollmentIdentifier = "browser_sample_app_" + SampleAppUtilities.generateUUId();
       latestProcessor = new EnrollmentProcessor(sessionToken as string, SampleApp as any);
+      // Trigger ID Scan and OCR immediately after successful verification
+      onPhotoIDMatchPressed();
     });
   }
 
@@ -108,8 +110,6 @@ export var SampleApp = ((): any => {
       // Get a Session Token from the FaceTec SDK, then start the 3D to 3D Matching.
       getSessionToken((sessionToken?: string): void => {
         latestProcessor = new VerificationProcessor(sessionToken as string, SampleApp as any);
-        // Trigger ID Scan and OCR immediately after successful verification
-        onPhotoIDMatchPressed();
       }); 
     }
   }
