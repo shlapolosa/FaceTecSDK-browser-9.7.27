@@ -198,7 +198,9 @@ export class EnrollmentProcessor implements FaceTecFaceScanProcessor {
   //
   public isSuccess = (): boolean => {
     return this.success;
-  };
+  }
+}
+
 function createUser(userId: string): Promise<void> {
   return fetch('http://localhost:3000/api/users', {
     method: 'POST',
